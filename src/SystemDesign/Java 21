@@ -1,0 +1,11 @@
+
+This version introduces generational capability to ZGC. Previously, all objects were treated equally during collection,
+creating potential performance bottlenecks for younger, livelier objects. Now, ZGC categorizes objects into generations
+based on their age, allowing faster collection of older generations without impacting younger ones.
+
+ZGC's Algorithms:
+
+Mark-Sweep: The foundation of ZGC, identifying reachable objects and reclaiming memory from unreachable ones.
+Read Barrier: Enables accurate marking by tracking references created during collection.
+Concurrent Sweeping: Sweeps unreachable memory concurrently with application execution, minimizing pauses.
+Coloring: Used in the generational aspect, classifying objects based on their age for more efficient collection.

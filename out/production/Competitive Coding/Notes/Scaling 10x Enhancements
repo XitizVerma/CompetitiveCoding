@@ -1,0 +1,6 @@
+1. Sync Event Notifications to Saving and Async Processing
+2. Multithreading while getting fetching Order Details and Pushing to OMS
+3. Bulk Push Mechanism with response mechanism of Success/Faiure List
+4. Retry Mechanism with lastSyncTryTime & isSynced Flag
+5. Exponential BackOff Reattempt
+6. Fetch All Pending Orders with maxOrderCreatedTime

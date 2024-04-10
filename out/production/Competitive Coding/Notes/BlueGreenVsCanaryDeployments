@@ -1,0 +1,9 @@
+Two common deployment techniques which can virtually eliminate downtime are :
+
+1. Blue Green Deployment
+In Blue Green Deployment, we serve the current app on one half of our environment (Blue)
+while deploy our new application on the other half (Green)
+
+2.Canary Deployment
+In Canary Deployment we can switch the version of a small subset of servers or nodes first,
+and gradually transform all others

@@ -1,0 +1,24 @@
+Instagram
+
+User Service + Authorization/Authentication Service
+Post Service
+Event Notification Service - Like and Comment
+Feed Service
+Messaging Service
+VideoCalling Service - WebRTC
+
+========================================================================================================================
+
+E-Commerce Platform
+
+Products Microservice
+Order Microservice
+Inventory Microservice
+Return Microservice
+Authorization/Authentication Microservice
+Feed Microservice
+Logistic Aggregator Connector Microservice
+Pdf Generation Microservice
+
+
+

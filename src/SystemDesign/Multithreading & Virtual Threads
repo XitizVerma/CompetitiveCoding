@@ -1,0 +1,86 @@
+Things to study -
+JDK 21
+
+https://www.google.com/search?q=how+to+use+virtual+thread+in+java&oq=how+to+use+virtual+thread++in+java&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQABgNGIAEMg0IAhAAGIYDGIAEGIoFMg0IAxAAGIYDGIAEGIoFMg0IBBAAGIYDGIAEGIoF0gEJMjA1NTFqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
+
+https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html#GUID-A0E4C745-6BC3-4DAE-87ED-E4A094D20A38
+
+
+
+Challenges to Multithreading & Concurrency :
+
+
+1. Thread Leaks
+Thread leaks occur when you create threads in your Java application but forget to properly terminate them, leading to them being stuck in an active state even though they are no longer needed. This can cause several problems, including:
+
+Resource exhaustion: Each active thread consumes memory and CPU resources, which can eventually exhaust available resources and impact application performance.
+Performance degradation: As more threads accumulate in a leaky state, overall system performance can deteriorate due to increased context switching and resource contention.
+Application instability: Unforeseen behavior and potential crashes can occur if leaked threads hold onto critical resources or interfere with other parts of the application.
+Here are some common causes of thread leaks in Java:
+
+Not calling join(): After creating a thread, forgetting to call its join() method prevents it from finishing and being reclaimed by the JVM.
+Unclosed resources: Threads that hold onto resources like database connections, file handles, or network sockets even after they are done can leak, preventing resource cleanup.
+Daemon threads: While designed to run in the background without keeping the JVM alive, improperly used daemon threads can also leak if they never terminate.
+Thread-local storage: Incorrect usage of thread-local storage, where resources are not removed explicitly, can lead to leaks.
+Third-party libraries: Sometimes, bugs or improper usage of third-party libraries can introduce thread leaks into your application.
+Here are some steps you can take to prevent thread leaks:
+
+Always call join(): Ensure you call join() on any threads you create and are responsible for managing.
+Close resources promptly: Close all resources (connections, files, sockets) as soon as the thread is finished with them.
+Minimize daemon threads: Use daemon threads cautiously and only for intended background tasks that should not prevent JVM shutdown.
+Manage thread-local storage: Always remove stored objects from thread-local storage when the thread is done using them.
+Monitor and debug: Use tools like thread dumps and profilers to identify and investigate potential leaks.
+Consider thread pools: Using thread pools can help ensure threads are properly managed and reused, reducing the risk of leaks.
+
+
+2. Deadlock
+A deadlock occurs in a Java program when two or more threads are blocked forever, waiting for each other to release resources. Each thread holds one resource the other needs, leading to a stalemate where neither can proceed. This can cause your application to freeze or crash.
+
+Here's how deadlocks typically happen:
+Thread 1 acquires resource A.
+Thread 2 acquires resource B.
+Thread 1 tries to acquire resource B, but it's blocked because Thread 2 holds it.
+Thread 2 tries to acquire resource A, but it's blocked because Thread 1 holds it.
+Both threads are stuck, waiting for each other to release resources they won't release, creating a deadlock.
+Here are some common causes of deadlocks:
+
+Incorrect locking order: Acquiring resources in different orders in different threads can lead to deadlocks.
+Nested locks: Holding multiple locks within a single thread can increase the risk of deadlocks.
+Unreleased resources: Failing to release resources when they are no longer needed can contribute to deadlocks.
+Circular dependencies: If threads wait for resources in a circular pattern, a deadlock can occur.
+Here are some tips to prevent deadlocks in Java:
+
+Use lock ordering: Define a consistent order for acquiring resources to avoid conflicts.
+Avoid nested locks: Minimize the use of nested locks, or carefully manage them to avoid circular dependencies.
+Use timeouts: Set timeouts on lock acquisition to prevent threads from waiting indefinitely.
+Use try-with-resources: This syntax ensures resources are automatically released, even in case of exceptions.
+Consider lock-free alternatives: Explore non-blocking data structures or concurrent collections that avoid explicit locking.
+Monitor and debug: Use tools like thread dumps and profilers to identify and analyze potential deadlocks.
+
+3. Resource Thrashing
+Resource thrashing is a phenomenon that occurs in computing systems when the demand for resources like memory, CPU, or network bandwidth exceeds the available supply. This leads to a situation where the system spends more time managing resources (swapping pages, context switching, etc.) than performing actual work, resulting in a significant performance degradation.
+
+Causes:
+Overallocation: Allocating more resources to processes than the system can physically handle.
+Inefficient algorithms: Poorly written algorithms or applications that don't utilize resources efficiently.
+External factors: Sudden spikes in workload or resource limitations due to external factors like hardware failures.
+Symptoms:
+
+Slow response times: Applications take significantly longer to perform tasks.
+High CPU utilization: The CPU is constantly swapping and context switching, leading to high utilization even for simple tasks.
+Increased disk activity: Excessive paging or swapping data to disk to manage memory pressure.
+System crashes: In severe cases, the system might become unstable and crash due to resource exhaustion.
+Impact:
+
+Reduced productivity: Users experience significant delays and performance issues, impacting their work efficiency.
+Increased costs: Resource thrashing can lead to higher infrastructure costs due to the need for more powerful hardware or increased cloud service usage.
+System instability: In extreme cases, thrashing can cause system crashes and downtime.
+Prevention and Mitigation:
+
+Monitor resource usage: Closely monitor CPU, memory, network, and disk utilization to identify potential bottlenecks.
+Efficient resource allocation: Allocate resources based on actual needs and avoid overallocation.
+Optimize algorithms: Review and improve the efficiency of applications and algorithms to minimize resource consumption.
+Prioritize tasks: Ensure critical tasks have access to necessary resources while managing less critical processes.
+Consider upgrades: If necessary, consider upgrading hardware or scaling cloud resources to increase available capacity.
+By understanding the causes, symptoms, and impact of resource thrashing, you can take proactive steps to prevent it and ensure smooth operation of your computer systems. Implementing resource monitoring, efficient allocation, and performance optimization strategies are crucial for maintaining system stability and user productivity.
+
