@@ -1,0 +1,93 @@
+Databases -
+
+Key-value database - used for storing key value pairs in a distributed manner (e.g., Amazon DynamoDB, Redis, or Cassandra)
+Document database - used for storing JSON documents (e.g., MongoDB, Azure CosmosDB, CouchDB)
+Ledger database - store using an append only record journal (e.g., Amazon QLDB)
+Graph database - used for storing data with complex relationships (e.g., Amazon Neptune, Neo4J, or Tiger DB)
+Distributed data processing system - Apache Hadoop/Spark to process tracking data.
+
+========================================================================================================================
+SQL
+SQL store data in tables with rows and columns.
+
+ACID Properties ---
+
+1. Atomicity: Imagine ordering pizza online.
+Adding items to your cart, providing your address, and making the payment are all part of a single transaction.
+ACID in action: Either the entire order goes through successfully, or nothing happens.
+Violation: Imagine the order being placed, money deducted, but the pizza never arrives.
+This violates atomicity as only part of the transaction completed.
+
+2. Consistency: Think about updating your bank balance online.
+The balance displayed should always reflect the actual amount of money you have.
+ACID in action: Adding a deposit should consistently increase the displayed balance, and withdrawing should decrease it, maintaining data integrity.
+Violation: Imagine the website incorrectly updating your balance after a deposit, showing inaccurate information.
+This violates consistency as the data doesn't reflect reality.
+
+3. Isolation: Consider two people booking movie tickets simultaneously.
+Each person's purchase should be independent of the other, ensuring no conflicts.
+ACID in action: Person A sees and reserves a seat, and Person B sees the same seat available until A confirms their purchase. No interference occurs.
+Violation: Imagine both A and B seeing the same seat available and booking it simultaneously, leading to double-booking.
+This violates isolation as transactions interfere with each other.
+
+4. Durability: Picture booking a flight online and receiving a confirmation email.
+Even if the website crashes after booking, your reservation should be secure.
+ACID in action: Once you receive the confirmation, the booking is permanently stored in the airline's system, safe from system failures.
+Violation: Imagine booking a flight and receiving a confirmation, but the booking disappears after a website crash. This violates durability as data wasn't persisted permanently.
+
+
+========================================================================================================================
+
+
+MONGODB
+
+MongoDB is called a Document-based NoSQL database.
+MongoDB stores data in flexible, semi-structured documents.
+These documents resemble JSON objects, allowing you to embed complex data structures within each document.
+This flexibility makes it easier to model diverse and evolving data structures without rigid schema definitions.
+
+CAP Theorem ---
+
+CAP Theorem Example: Social Media App
+Imagine building a social media app where users post updates and interact with each other.
+This app needs to strike a balance between three key properties:
+
+Consistency (C): Users always see the latest updates across all devices, regardless of location or server they connect to.
+Availability (A): The app is always accessible and responsive, even if some servers are down or experiencing network issues.
+Partition Tolerance (P): The app continues to function even if parts of the network are partitioned (divided), ensuring regional outages don't impact the entire system.
+
+Unfortunately, the CAP theorem states you can only have two of these properties at a time. Let's explore different scenarios based on which two you prioritize:
+
+Scenario 1: CA (Consistency and Availability)
+
+Users always see the latest updates, even across different devices.
+However, if a network partition occurs, some users might become temporarily unavailable (partially sacrificing P).
+This setup might be suitable for social media platforms prioritizing real-time updates where brief periods of unavailability due to partitioning are acceptable.
+
+Scenario 2: AP (Availability and Partition Tolerance)
+
+The app remains accessible and responsive even during network partitions.
+However, data might not be immediately consistent everywhere. Users might see slightly outdated information until updates propagate across partitions.
+This setup might be appropriate for news platforms or other services where immediate global consistency is less critical, and ensuring continuous access during potential outages is crucial.
+
+Scenario 3: CP (Consistency and Partition Tolerance)
+
+Users always see the latest updates, even during network partitions.
+However, achieving this perfect balance often comes at the cost of reduced scalability and performance.
+Extensive data replication and complex synchronization mechanisms are needed.
+This setup might be suitable for financial applications or systems handling highly sensitive data where strict consistency and data integrity are paramount, even during disruptions.
+Remember: Each situation has its trade-offs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

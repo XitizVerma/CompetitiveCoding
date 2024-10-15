@@ -1,0 +1,51 @@
+SOLID Design Principles
+
+Single Responsibility Principle
+SRP states that a class should have only one reason to change.
+Meaning that a class should have only one job.
+If a class has multiple responsibilities, it increases the chance of bugs, because making change to one of its
+responsibilities, could affect the ones without you knowing.
+The principle aims to separate behaviour, so that if bugs arrise a result of your change, it wont affect other
+unrelated behaviour.
+
+Open Closed Principle
+OCP states that objects and entities should be open for extension(Abstraction), but closed for modification.
+In other words, well tested class should not be changed during feature addition.
+Changing the current behaviour of a class will affect all systems using it.
+
+Liskov's Substitution Principle
+LSP states that every subclass or derived class should be substitutable for their base or parent class
+This principle aims to enforce consistency so that the parent Class or its child Class can be used in the same way
+without any errors.
+Example to understand the Liskov Substitution Principle (LSP):
+Imagine you have a pet store and different types of animals:
+Class: Animal
+Methods: makeSound(), eat() (all animals can make some kind of sound and eat)
+Now, let's create subclasses for specific animals:
+Class: Dog extends Animal
+Method: makeSound() (barks)
+Method: eat() (eats dog food)
+Class: Bird extends Animal
+Method: makeSound() (chirps)
+Method: eat() (eats birdseed)
+This scenario adheres to the LSP. A Dog object is a subtype of Animal, and you can use a Dog object wherever you expect
+an Animal. Both can make a sound and eat, even though the specifics differ.
+Here's where LSP can be violated:
+Class: Fish extends Animal (seems reasonable)
+Method: makeSound() (throws an exception, fish don't vocalize) <-- Violation
+Method: eat() (eats fish flakes)
+This Fish class breaks the LSP. While it inherits makeSound() from Animal, it can't fulfill that contract because fish
+don't make sounds in the traditional sense. Using a Fish object where you expect an Animal to make a sound would lead to unexpected behavior (the exception).
+Key takeaway:
+The LSP ensures that a subclass (like Dog or Bird) can be used seamlessly in place of its parent class (Animal) without causing errors or unexpected behavior.
+
+Interface Segregation Principle
+ISP states that a client should never be forced to implement an interface that it does not use
+This principle aims at splitting a set of actions into smaller sets so that a Class executes only the set of actions
+it requires.
+
+Dependency Inversion Principle
+Entities must depend upon abstraction and not on concretions.
+It states that high level module should not depend upon low level module, but they should depend upon abstaction.
+DbConnection Interface
+

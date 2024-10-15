@@ -1,0 +1,7 @@
+Prototype Design Pattern
+
+The concept is to copy an existing object rather than creating a new instance from scratch,
+because creating a new object may be costly, (when object creation is a heavy process).
+
+Implementing clonable interface to clone objects faster.
+Concept of Shallow Cloning and Deep Cloning (nested looping)

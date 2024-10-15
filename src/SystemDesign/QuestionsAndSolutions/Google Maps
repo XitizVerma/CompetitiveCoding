@@ -1,0 +1,100 @@
+Google Maps
+
+Functional Requirements
+
+When a person wants to go from Point A to Point B,
+Identify Routes/Roads
+Which route the User should follow
+Route's Distance and Time - optimize distance/time
+Pluggable Model - plug Traffic Data
+
+Non Functional Requirements
+
+Highly Available
+Good Accuracy
+Not too slow - 1-2 seconds is decent
+
+Scale
+
+First identify the number of users - lets say 1 billion monthly users and 10000 companies
+Lets say each user uses Google Maps 2-3 times a month.
+Hence it brings the daily requests to 10^9 * 3 / 30 = 10^8 requests per day on average
+Since 1 million requests per day is approximately equal to 12 req/sec
+Hence our system will need to server 1200 requests/second.
+Hence a system of this scale will require significant amount of compute resources.
+
+Graph DS -
+100 million roads
+Around 500 million vertices
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+Segments of 1 km square
+Each coordinate/place/vertex can be mapped to a segment
+Distance between segments is the distance between their centers.
+
+
+Directed Graph from Point A to B (Due to varying condition/traffic patterns etc in either ways)
+
+Multiple weights -
+Distance Weight
+Time Weight(ETA)
+Traffic Weight
+
+Shortest Path between Point A to Point B - Djikstra or Bellman Ford Algorithm
+Floyd Warshall Algorithm - calculated Edge - Point A -> B -> C
+To calculate all possible distance within the segments
+
+20 segments buffer on NEWS side to break the Djikstra.
+
+Each segment will have a set of entry points and exit points
+By breaking the in-between associated segments entry point and exit points and feeding those points into Djikstra,
+we can reduce the number of edges from 1000s to 100s for 10 segments and significantly reduce computation.
+
+Similarly in case of inter-cities, we can create megaSegment and identify its entry point and exit point.
+Divide the country's co-ordinates into megaSegments.
+
+If we want to go from City A to City B, we just have to connect the entry and exit points
+of in between megaSegments and solve recursively.
+
+We can calculate Average Speed from Distance and Time
+Now all the Nett Average Speed could have attributes like Traffic or Weather Information
+
+From the users who are using this application, we have real time data for traffic and others (Organic Data)
+And using slight distances from mean of bell shaped curved of Normal Distribution, we can get the most probable
+time range of ETAs
+(Example mean is 6, we can get 5-7 as range of ETAs)
+
+Since Traffic - No of vehicles or Weather cannot be exactly quantified,
+We can distribute these attributes into a set of Tiers like
+Traffic - Low, Medium or Heavy (Green, Yellow, Or Red)
+and then we can modify and calculate Nett Avg speed as whenever traffic is low avgSpeed += 20 kmph or increase in 20%
+Weather - Good or Bad
+
+
+Services
+                  -   Area Service (Calculate Coordinates)
+
+                  -   Navigation and Tracking Service (if User is going in the right direction else update ETA)
+
+User Service - LB -   Map Service
+
+                  -   Segment Service --- Connected to Cassandra (Segment Data)
+
+                  -   Graph Processing Service (calls segment service and calculate Distance and ETA) --- Cassandra
+                      (Caching)
+
+                  - Kafka - Publish to Topic for each Event
+                  - Spark Streaming
+                  - Hadoop
+                  - Spark Cluster - Anaytics
+
+
+                  - Third Party
+
+
+Hadoop/ML/DL could be used for -
+
+Update Traffic Info/update Avg Speed
+Add Roads

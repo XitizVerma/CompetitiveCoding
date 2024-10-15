@@ -1,0 +1,16 @@
+Architected and developed the Increff Integrations Platform (IIP), composed of microservices architecture that modernized the monolithic Order Management System (OMS).This innovative microservices architecture, consisting of 6 independent services (Orders, Returns, Inventory, Products & Listings, Configuration, Authentication) and 4 reusable libraries (integrations-commons, transform-commons, job manager, event manager).
+This new platform’s architecture leverages RabbitMQ for asynchronous communication, event-driven architecture for loose coupling, and multithreading for efficient resource utilization. Additionally, it utilizes MongoDB for sharding and clustering to ensure scalability, and integrates with Kubernetes and ArgoCD for rapid deployment and continuous delivery, thus significantly improving scalability, maintainability, and development velocity. This not only facilitated a dramatic reduction in development time for new Marketplace and OMS integrations, but also led to an impressive 80% reduction in database size and a 30% reduction in server costs.
+Responsible for upgrading and scaling features for Integrations of Flipkart, Amazon India, Ajio, Meesho, Nykaa, Benetton, Repro and Client ERPs with our Internal WMS.
+Single handedly developed Walmart US Integration (Async Notifications/Push as well as Pull Model)
+Carried out critical architecture changes of Flipkart Push Notifications Flows to Async Job scheduling mechanism and
+implemented Multithreading, Bulk Process and Retry mechanism to handle over 100000 RPM of over 50 clients
+successfully enhancing system’s performance and ensuring scalability.
+Embedded Features in Company - wide used Integrations Commons Library like Authentication, Encryption,
+ELK-Logging-Commons, Common-Interface etc.
+Worked on two projects from scratch, POS (Point Of Sale Application) and Toy Assure (a miniature version of the
+company’s Warehouse Management offering)
+Moved inter-microservice calls to MQ event-driven architecture. Learned about web development stack used
+company-wide and creatively contributed to Increff’s Omni-channel order and Warehouse management software(Omni)
+by streamlining onboarding, operations and augmenting it with new features/functionalities.
+Experience with microservices, monolith and event driven architectures.
+Tech: Spring, Java, JUnit, Hibernate, Maven, MySQL, MQ, ELK, Swagger, Google Cloud, Jenkins, Artifactory,

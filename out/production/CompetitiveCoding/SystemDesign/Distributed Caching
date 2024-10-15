@@ -1,0 +1,11 @@
+Use Cases :
+Managing User Session - Authentication
+Managing Session Data - UserIds SessionId UserPreferences
+
+In Memory Caching to increase throughput between inter-microservice calls
+
+Under the hood - it is a distributed hash table which maps object value to keys spread across multiple nodes
+The Distributed Hash Table allows Distributed Cache to scale on the fly.
+It manages the addition, deletion, failure of nodes continuously as long as the Cache service is live.
+
+MemCache - Google

@@ -1,0 +1,31 @@
+To find how can multiple Consumers consume a message from a Queue & how Acks are managed
+How priority of a message is set and processed
+Internal Working of RabbitMq, Kafka
+Load Balancing in MQ
+Max size of messages in MQ
+
+Rabbit MQ - Uses AMQP - Advanced Message Queuing Protocol
+Kafka is a distributed system/Event Streaming Platform that can scale massive pipelines of real time data.
+Producer - An application that sends message(data) to Kafka Server(as array of  bytes)
+Consumer/Subscriber - An application that receives message from Kafka Server
+                        Consumer will request Kafka Server for the message
+Broker - Kafka Server.
+            Producer and Consumer do not talk directly. They talk via Kafka Broker
+Cluster - Group of computers working together for a common purpose(Distributed Systems)
+            In this case group of brokers.
+            Kafka Cluster consists of [Broker 1, Broker 2, Broker 3, Zookeeper]
+Topic - Topic is an unique name given to Kafka Stream
+            For example we create a topic named Global Orders and every Point of Sale has a Producer.
+            Each of them send theirs orders to a common topic called Global Orders.
+            Subscriber interested in the same topic can subscribe to same topic
+Partition - Broker will store data for a topic.This data may be huge.
+            This data can be larger than the storage capacity of a single computer.
+            Break the data into two or more parts and distribute it to multiple computers.
+            Kafka can break a topic into multiple partitions and store it in each individual computer.
+            When we create a topic, we specify the number of partitions and Kafka broker will partition the topic.
+Offset - A sequence id given to messages as they arrive in partition.
+           Offsets never change. They are immutable.
+           Topic Name - Partition Number - Offset - With these three things we can directly locate a message
+Consumer Group - A group of consumers acting as a single logical unit to share the work.
+Zookeeper - Used to manage a cluster
+

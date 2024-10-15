@@ -1,0 +1,28 @@
+Sharding
+
+Sharding is a way to break down databases (Data distribute) into small segments for effective retrieval and scalability.
+Sharding is done based on partioning key - Good shard key(orgId)
+
+MongoS is the router that routes the document to specific database server
+Types of sharding -
+1. Range Based Sharding - partionKey -> A-J, J-S, S-Z
+2. Hashed Sharding - hashFunction(partioninKey) = Shard A, Shard B
+3. Directory Sharding - red Colour - Shard A, blue Colour - Shard B
+4. Geo Sharding - Dating Site - can shard different users based on their locations - Like city as partioning key
+
+
+
+Replication
+
+Duplication of data to multiple servers
+Copying of data from one node to another or the synchronization of states between nodes.
+
+                        Primary Node
+                       /             \                  (asynchronously)
+                 Replica 1          Replica 2
+
+Fault Tolerance is directly proportional to Availability.
+A machine with good fault tolerance is highly available.
+Distributed System (microservices) is more fault tolerance and available than monolithic architecture
+as it contains no single point of failure.
+

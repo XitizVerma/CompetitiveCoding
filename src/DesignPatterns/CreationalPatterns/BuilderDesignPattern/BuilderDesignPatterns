@@ -1,0 +1,6 @@
+Limitations of Factory Design patterns :
+1. Pass too many arguments to create objects
+2. Some parameters may be optional
+3. Factory class takes all responsibility for creating objects.(heavy objects)
+
+In Builder pattern, we create object and set property step by step, and finally return final object.

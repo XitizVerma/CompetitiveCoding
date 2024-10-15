@@ -1,0 +1,6 @@
+Producer/Broker
+A broker pushes the message into the Exchange
+Queue
+Queues are binded to the Exchange which read messages from Exchange
+Consumer
+Consumers read messages from Queues

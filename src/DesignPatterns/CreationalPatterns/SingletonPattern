@@ -1,0 +1,46 @@
+Singleton Pattern
+Only a single object should be created and used everywhere.
+Example - Like JdbcConnection object
+
+Constructor could be private so that it could not be called from outside
+
+Eager Initialization
+private static Samosa samosa = new Samosa();
+return samosa;
+This object is created when class is loaded.
+For big projects, not adviced to create so many singleton eager objects as they consume memory;
+
+Lazy Initialization
+private static Samosa samosa;
+if(Objects.isNull(samosa))
+    return samosa = new Samosa();
+else
+    return samosa;
+//Not thread safe
+To make it thread safe, we have to implement method synchronization
+
+Method Synchronization
+public synchronized static Samosa getSamosa(){
+}
+In this case while thread 1 is executing this method, thread 2 will have to wait
+
+Synchronized block
+public static int main(String[] args) {
+    int i;
+    synchronized (Integer.class){
+        if(Objects.isNull(i))
+            return i=0;
+    }
+}
+
+We can break singleton pattern by either using Reflection Apis :
+Creating object of a class from its constructor
+Constructor<Integer> constructor = Integer.class.getDeclaredConstructor();
+constructor.setAccessible(true);
+Integer object = constructor.newInstance();
+
+By serializing and deserializing also, we can create new object, hence break singleton design pattern.
+By cloning objects also we can break singleton design pattern.
+
+
+

@@ -1,0 +1,19 @@
+Rabbit MQ
+
+Exchange -
+Receives messages from Producer and pushes them into queue depending upon rules defined by the exchange type. A queue must be bound to at least one exchange in order to receive messages.
+
+Bindings -
+Bindings are rules that exchanges use to route messages to queues
+
+Routing Key -
+A key that the exchange uses to decide how to route the messages to queue
+
+Steps -
+Producer publishes messages to exchange via a channel established between them at the time of application startup.
+Exchange receives the message and finds appropriate bindings based on message attributes and exchange types.
+Selected binding is then used to route messages to intended queues.
+The message stays in the queue until handled by the consumer.
+Consumers receive the messages using channels established usually at application startup.
+
+1010

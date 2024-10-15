@@ -1,0 +1,12 @@
+Design Patterns are the well proved solution of commonly occuring problems in software designing.
+
+Factory Method Design Pattern
+
+When there is a superclass(something like abstract class) and multiple subclasses, then we want to get object
+to the subclasses based on input and requirements.
+Then we create factory class which takes the responsibility of creating object of that class based on input.
+
+Abstract Factory Design Pattern
+It uses a concept of Factory of factories
+
+

@@ -1,0 +1,11 @@
+Capacity Estimation
+
+Traffic - User/Request
+Capacities : Metric System Try to go for Millions,Billions and Trillions and not Lakhs and Crores
+Round of Capacities to 10 ka power
+
+Storage Capacity - kb, mb, gb
+
+Memorization
+1 million Transactions per day = 1000000/86400 = 12 transactions per second
+

@@ -1,0 +1,47 @@
+Java utilizes an automatic memory management system handled by the Garbage Collector (GC) within the Java Virtual Machine (JVM).
+Here's a breakdown of how it works:
+
+1. Objects in the Heap:
+When a Java program runs, objects are created and stored in a dedicated memory region called the heap.
+The heap is dynamically allocated, meaning its size can grow or shrink as needed during program execution.
+
+2. Object Reachability:
+The GC identifies unused objects (garbage) by determining their reachability from the program's execution state.
+Objects that are no longer accessible by the program can be reclaimed by the GC.
+
+3. Garbage Collection Process:
+The GC runs periodically or when the heap memory becomes low.
+It involves a few key steps:
+
+Marking: The GC starts by identifying all "root" objects that are still actively used by the program.
+These roots include:
+Global variables
+Local variables within current methods
+Objects referenced from the method call stack
+The GC then traverses the heap, marking all objects reachable from these roots.
+Objects that remain unmarked are considered unreachable (garbage).
+
+Sweeping: Once the marking phase is complete, the GC sweeps through the heap and reclaims the memory occupied by unmarked objects.
+This frees up memory space in the heap for future object allocations.
+
+Compacting (Optional): In some GC implementations, a compaction step might be performed after sweeping.
+This process involves reorganizing the remaining live objects in the heap to minimize fragmentation and improve memory allocation efficiency.
+
+4. When is GC triggered?
+The JVM automatically triggers GC under various conditions:
+When the heap becomes full, and the program attempts to allocate a new object, the GC runs to free up space.
+The GC might also run periodically based on pre-defined configurations or heuristics within the JVM.
+
+5. No developer control:
+Unlike manual memory management in some languages (C++), Java developers don't have direct control over when or how the GC runs.
+This simplifies memory management but can sometimes lead to performance implications if GC pauses occur during critical program sections.
+
+6. Garbage Collection Algorithms:
+The specific algorithms used by the GC can vary depending on the JVM implementation. Some common algorithms include:
+Mark-Sweep (as discussed above): A simple and widely used approach.
+Mark-Compact: Similar to Mark-Sweep but also compacts the live objects after sweeping to reduce fragmentation.
+Generational Garbage Collection: This strategy categorizes objects based on their age in the heap.
+Younger objects are generally more likely to be short-lived, so they are collected more frequently.
+
+By automatically managing memory, the Java Garbage Collector simplifies development and reduces the risk of memory leaks.
+However, it's still beneficial for developers to understand how GC works to write efficient and memory-conscious Java programs.

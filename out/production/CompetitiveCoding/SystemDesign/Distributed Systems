@@ -1,0 +1,33 @@
+Synchronized Clock
+Maintain clocks in different countries/regions (distributed system).
+
+Consistent Core
+Maintain a smaller cluster providing stronger consistency to allow the large data cluster
+to coordinate server activities without implementing quorum-based algorithms.
+When a cluster needs to handle a lot of data, it uses more and more servers.
+For a cluster of servers, there are some common requirements, such as selecting a server to be the master for a particular task, managing group membership information, mapping data partitions to servers etc.
+This functionality requires a strong consistency guarantee of linearizability. The implementation also needs to be fault-tolerant.
+A common approach is to use a fault-tolerant consensus algorithm based on Majority Quorum. However, in quorum-based systems, throughput degrades with the size of the cluster.
+For any operation to be done on a cluster of n servers,
+a specific number of nodes should replicated the operation, known as quorum.
+Hence as the number of nodes increases(1000 nodes), the time taken for this operation becomes very inefficient.
+Solution - We create a separate small cluster of lets say 3/5 node apart from main cluster,
+and all the consistency related information is persisited by this consistent core.
+
+Service Mesh
+An instance of Service Mesh is deployed in each VM along side each MS.
+It is the responsibility of this Service Mesh to log calls, send requests, metrics, retries, loadbalance.
+
+Emergent Leader
+Peer to peer networks are distributed servers which are connected without a central server/controller.
+Each user/computer is called a peer and acts as both a user and provider of resources.
+Hence in order to decide the leader among themselves, we order clusters based on their age and assign the oldest cluster as leader without an explicit election.
+
+Leader Writes Follower Reads
+When using the leader-follower pattern, it may happen that the leader may get overloaded with a large number of requests are sent to it.
+Hence write requests go to leader to maintain consistency, and read requests go to follower.
+
+Majority Quorum
+A cluster agrees that it's received an update when a majority of the nodes in the cluster have acknowledged the update. We call this number a quorum. So if we have a cluster of five nodes, we need a quorum of 3. For a cluster of n nodes, the quorum is n / 2 + 1.
+The need for a quorum indicates how many failures can be tolerated—which is the size of the cluster minus the quorum. A cluster of five nodes can tolerate two of them failing. In general, if we want to tolerate f failures we need a cluster size of 2f + 1.
+

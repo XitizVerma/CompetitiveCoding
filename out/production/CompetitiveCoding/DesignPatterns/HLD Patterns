@@ -1,0 +1,41 @@
+Ambassador Pattern
+Acts as a Proxy between our app and services offloading tasks like logging monitoring etc
+
+                              Ambassador
+                              Proxy to handle(Maybe use Kafka)
+
+                              Logging                               Reduces Latency
+Application ----------------  Monitoring                            Async Processing
+                              Handling retries                      Improves Architecture
+
+==================================================================================================================
+
+Circuit Breaker
+When a service becomes unavailable, the Circuit Breaker stops requests, allowing it to recover.
+
+==================================================================================================================
+
+CQRS
+Command Query Responsibility Segregation
+By separating the write command and the read/query command, we can scale and optimize each independently.
+
+Read Queries ------------> Read Database
+      (Eventual Consistency)      \\      (Replication)
+                           Write Database <------------ Write Queries
+
+==================================================================================================================
+
+Event Sourcing
+Journal of events
+Instead of updating a record directly, we store events representing changes.
+Enables better auditing and debugging
+Git Version Control
+Analytical Purposes
+
+==================================================================================================================
+
+Pub Sub
+Update across multiple components
+
+==================================================================================================================
+

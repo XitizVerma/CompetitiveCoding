@@ -1,0 +1,24 @@
+hashMap.contains(ch)?hashmap.get(ch)++:1;
+freq.put(word.charAt(i),freq.containsKey(word.charAt(i))?freq.get(word.charAt(i))+1:1);
+freq.getOrDefault(word.charAt(i), 1)
+
+HashSet<String> hashSet = new HashSet<>(Arrays.asList("+", "-", "*", "/"));
+
+
+for(EventPojo eventPojo : eventPojos){
+            //clientId, eventTypes //ENABLED
+            Set<String> s;
+            if(hash.containsKey(eventPojo.getClientId())){
+                s = hash.get(eventPojo.getClientId());
+                s.add(eventPojo.getEventType());
+                hash.put(eventPojo.getClientId(),s);
+            }else{
+                hash.put(eventPojo.getClientId(),new HashSet<>(Collections.singletonList(eventPojo.getEventType())));
+            }
+        }
+
+Optimized approach
+Map<String, Set<String>> hash = new HashMap<>();
+for (EventPojo eventPojo : eventPojos) {
+       hash.computeIfAbsent(eventPojo.getClientId(), clientId -> new HashSet<>()).add(eventPojo.getEventType());
+}

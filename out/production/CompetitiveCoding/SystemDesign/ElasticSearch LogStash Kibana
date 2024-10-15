@@ -1,0 +1,17 @@
+ElasticSearch Logstash Kibana
+
+
+Inverted Trees Concept
+Log 0 : a b c
+Log 1 : d a
+Log 2 : e
+
+These logs are inverted and there indexes are stored as
+a : [0,0], [1,1]
+b : [0,1]
+c : [0,2]
+d : [1,0]
+e : [2,0]
+This way we are able to retrieve the queries faster
+
+Kibana - Graphical UI
