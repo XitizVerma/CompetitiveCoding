@@ -1,4 +1,0 @@
-IteratorDesignPattern
-
-The iterator design pattern provides a way to access the element of an object
-without exposing its underlying implementation.

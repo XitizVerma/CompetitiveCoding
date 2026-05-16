@@ -1,3 +1,0 @@
-Observer Design Pattern
-
-In this, when the subject changes, the state of all its dependent objects(observer) changes
