@@ -67,13 +67,15 @@ public class Graph {
         boolean[] visited = new boolean[adjacencyList.size()+1];
         Queue<Integer> queue = new LinkedList<>();
         queue.add(root);
+        visited[root]=true;
         while(!queue.isEmpty()){
-            int node = queue.remove();
+            int node = queue.poll();
             System.out.println(node);
-            visited[node]=true;
             for(Integer i:adjacencyList.get(node)){
-                if(visited[i]==false)
+                if(!visited[i]){
                     queue.add(i);
+                    visited[i]=true;
+                }
             }
         }
     }
