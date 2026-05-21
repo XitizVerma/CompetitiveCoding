@@ -3,25 +3,6 @@ package Trees;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-class Node{
-    int value;
-    Node left,right;
-
-    public Node(){
-        left=right=null;
-    }
-    Node(int value){
-        this.value=value;
-        left=right=null;
-    }
-
-    Node(int val, Node right, Node left){
-        this.value = val;
-        this.right = right;
-        this.left = left;
-    }
-}
-
 public class BinaryTree {
 
     static Node root;
@@ -49,6 +30,12 @@ public class BinaryTree {
 //            TreeNode treeNode = new TreeNode();
 //        }
         isEvenOddTree();
+    }
+
+    public static Node getBinaryTree(){
+        return new Node(1,
+                new Node(10, new Node(3,new Node(12),new Node(8)),null),
+                new Node(4, new Node(7, new Node(6),null), new Node(9 , null, new Node(6))));
     }
 
     private static Node insertNode(Node node,int i) {
