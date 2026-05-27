@@ -1,0 +1,190 @@
+igh-Level Summary
+
+You built an AI-assisted operational intelligence and analytics platform on top of distributed telemetry and reporting data stored in ClickHouse.
+
+The goal was to help customer experience (CX), operations, and internal teams query enterprise engagement data in natural language instead of manually writing SQL queries or navigating dashboards.
+
+What Problem Were You Solving?
+
+Different enterprise customers generated huge amounts of operational and engagement telemetry:
+
+Active users
+Feature adoption
+Accent translation usage
+Synthesis counts
+Workflow engagement
+Customer-specific operational metrics
+Jira issue correlations
+Troubleshooting signals
+
+The problem was:
+
+CX/support teams were not technical
+Writing SQL queries repeatedly was slow
+Existing dashboards were rigid
+Troubleshooting across distributed systems was difficult
+
+So you built an AI/LLM-assisted analytics layer that converted human questions into structured analytical queries.
+
+System Architecture (Simple Explanation)
+1. Data Ingestion Layer
+
+Telemetry and reporting data from multiple services flowed into pipelines.
+
+Example events:
+
+User login activity
+Translation requests
+Accent synthesis events
+Feature usage
+Customer workflow interactions
+Service logs
+Operational metrics
+
+These events were aggregated and stored in ClickHouse because it is optimized for:
+
+High-ingestion analytics workloads
+Fast aggregations
+Time-series querying
+Large-scale reporting queries
+2. ClickHouse as the Analytics Backend
+
+You designed reporting tables that stored:
+
+Customer-level metrics
+Group-level engagement
+Feature adoption statistics
+Active user counts
+Time-based analytics
+Operational workflow metrics
+
+Example schema idea:
+
+customer_id
+group_id
+feature_name
+active_users
+translation_requests
+synthesis_count
+timestamp
+
+Since ClickHouse is columnar, aggregation queries like:
+
+COUNT(DISTINCT users)
+SUM(synthesis_count)
+GROUP BY customer/group
+
+were extremely fast even on large datasets.
+
+What You Mean by “Dictionary”
+
+What you’re calling a “dictionary” is likely one of these:
+
+Metadata mapping layer
+Query abstraction layer
+Intent-to-query mapping
+Semantic dictionary
+Dynamic query templates
+
+Basically:
+
+You mapped business terminology used by CX teams into actual database fields and query logic.
+
+Example:
+
+CX Question	Internal Mapping
+“How many active users in Group A?”	COUNT(DISTINCT user_id)
+“How many used accent translation?”	SUM(accent_translation_events)
+“Most engaged customer workflows?”	Aggregation query over workflow events
+
+So instead of exposing raw schema details, you created a semantic layer.
+
+That’s actually a strong architecture concept.
+
+Where LLM/LangChain Came In
+
+You likely used LangChain or similar orchestration to:
+
+Parse natural language questions
+Identify customer/group/feature
+Map intent to analytical query
+Generate safe SQL/query templates
+Execute against ClickHouse
+Return summarized insights
+
+Example flow:
+
+User asks:
+
+“How many active users in the Accent Translation group last week?”
+
+LLM extracts:
+
+{
+  "metric": "active_users",
+  "feature": "accent_translation",
+  "time_range": "last_week"
+}
+
+Then backend generates optimized ClickHouse query.
+
+Real-Time Operational Intelligence
+
+This phrase sounds fancy, but interviewers will ask what it means.
+
+You can explain:
+
+“The platform provided near real-time visibility into customer usage, feature adoption, operational health, and workflow behavior by continuously ingesting telemetry into ClickHouse and exposing AI-assisted analytics on top of it.”
+
+That sounds much stronger.
+
+Jira-Driven Issue Analysis
+
+If you integrated Jira operationally, explain it like:
+
+Correlated support tickets/issues with telemetry patterns
+Identified recurring operational problems
+Mapped customer complaints to actual usage or failure metrics
+Helped support/debugging teams reduce troubleshooting time
+
+Example:
+
+If a customer raised:
+
+“Accent synthesis is slow”
+
+You could quickly inspect:
+
+Request volume spikes
+Failure rates
+Latency metrics
+Adoption patterns
+
+through telemetry analytics.
+
+Distributed Systems / Troubleshooting Angle
+
+This is important for senior engineer interviews.
+
+You can say:
+
+“The platform centralized telemetry from multiple distributed services into a unified analytics layer, making troubleshooting and operational debugging significantly faster.”
+
+That demonstrates:
+
+Observability thinking
+Distributed systems understanding
+Analytics infrastructure exposure
+Better Resume Wording
+
+A more natural senior-level version:
+
+Architected an AI-assisted operational analytics platform using ClickHouse and LangChain to enable natural-language querying of enterprise telemetry, customer engagement metrics, feature adoption, workflow analytics, and operational insights across distributed systems. Designed semantic query-mapping layers and scalable reporting pipelines to support real-time troubleshooting, Jira-driven issue analysis, and high-performance analytical workloads.
+
+If Interviewer Asks “What Exactly Did YOU Build?”
+
+Say something like:
+
+“I mainly worked on the analytics abstraction layer between business queries and ClickHouse. I designed how CX/business questions were mapped into optimized analytical queries, built telemetry reporting structures, and integrated LLM-assisted querying workflows for operational insights.”
+
+That sounds concrete and believable.
