@@ -1,4 +1,4 @@
-igh-Level Summary
+High-Level Summary
 
 You built an AI-assisted operational intelligence and analytics platform on top of distributed telemetry and reporting data stored in ClickHouse.
 
@@ -186,5 +186,3 @@ If Interviewer Asks “What Exactly Did YOU Build?”
 Say something like:
 
 “I mainly worked on the analytics abstraction layer between business queries and ClickHouse. I designed how CX/business questions were mapped into optimized analytical queries, built telemetry reporting structures, and integrated LLM-assisted querying workflows for operational insights.”
-
-That sounds concrete and believable.
