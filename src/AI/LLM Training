@@ -1,0 +1,19 @@
+Stage 1: Pretraining
+
+1. Download ~10TB of text
+2. Get a cluster of ~6000 GPUs
+3. Compress the text into a neural network, pay ~$2M, wait ~12 days
+4. Obtain base model
+
+Stage 2: Finetuning
+1. Write labelling instructions [how system should behave]
+2. Hire people, collect 100K high quality ideal !&A responses, and/or comparisons
+3. Finetune base model on this data, wait ~1day
+4. Obtain assistant model
+5. Run a lot of evaluations
+6. Deploy
+7. Monitor, collect misbehaviors, go to step 1
+
+
+
+70B Parameter Model * 2bytes/param (floating point) = 140GBs
