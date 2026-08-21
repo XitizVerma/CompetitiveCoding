@@ -1,0 +1,41 @@
+Document Loaders:
+Extract text from files
+Handle different file formats - .pdf, .txt etc
+
+Text Splitters
+Chunk into 500-1000 char pieces
+Preserve sentence boundaries
+Add overlap(100-200 chars)
+
+Embeddings Generation
+Convert each chunk into Vector
+Use OpenAI/Claude/Ollama API
+
+Chunking ->
+Fixed Chunking (~500 chars)
+Semantic Chunking
+
+Chunking Variable that affect quality:
+Chunk Size -> Too small (loose context) while too large (dilutes meaning)
+Chunk Overlap -> 10-20% chunk overlap preserves context
+Split Boundaries ->
+    Cutting fixed length,
+    Cutting recursively at paragraphs/lines/clauses/words/characters, [DEFAULT]
+    Cutting at semantic meaningful boundaries [Quality]
+    Late Chunking
+Content Type -> Code, Legal, Markdown
+
+
+Langchain is a framework for developing applications powered by language models.
+Core Components
+1. Models : Langchain supports various LLM providers, OpenAI, Anthropic and local models.
+2. Prompt: Templates for structuring inputs to language models.
+3. Chains: Sequences of calls to models and other components.
+4. Agents: Systems that use LLMs to determine which actions to take.
+5. Memory: Components for persisting state between chain/agent calls.
+
+LangGraph is a library for building stateful, multi-actor applications. Key features:
+- State management
+- Cycles and loops
+- Human-in-the-loop
+- Persistence

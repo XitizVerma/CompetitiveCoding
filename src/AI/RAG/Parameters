@@ -1,0 +1,40 @@
+Temperature in an LLM controls randomness vs predictability in generated responses.
+
+Think of it as:
+
+Low temperature  → more deterministic
+High temperature → more creative/random
+Example
+
+Suppose you ask:
+
+"Suggest a startup idea"
+Temperature = 0
+temperature=0
+
+Output may always be:
+
+"AI-powered document search platform."
+
+Very stable.
+Very repeatable.
+
+Good for:
+
+RAG
+coding
+factual tasks
+SQL generation
+structured outputs
+Temperature = 1
+temperature=1
+
+Now outputs may vary:
+
+"AI therapist for remote workers"
+
+"Voice-based legal assistant"
+
+"Gamified fitness AI companion"
+
+More creative/random.

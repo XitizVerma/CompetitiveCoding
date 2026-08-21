@@ -1,0 +1,38 @@
+RAG stands for Retrieval Augmented Generation
+
+RAG grounds LLM responses in actual documents reducing hallucination
+
+RAG Architecture
+
+User Query
+Retrieval (find relevant docs, embedded docs/vector store)
+Context + Query (for combined prompt)
+LLM
+Response
+
+RAG Chain:
+Documents
+   ↓
+Chunking
+   ↓
+Embeddings
+   ↓
+Vector DB
+   ↓
+Retriever
+   ↓
+LLM (Qwen/Llama)
+   ↓
+Structured Answer
+
+Prompt Template:
+Answer based only on the following context.
+If the context doesnt contain the answer, say "I dont have information about that".
+Context : {CONTEXT}
+Question : {QUESTION}
+
+Retriever Output -> Formatted Context
+Add source tags to each chunk
+Some context here...
+source: doc.pdf
+
